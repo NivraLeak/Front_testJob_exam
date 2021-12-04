@@ -1,0 +1,48 @@
+
+<div *ngIf="authenticated; else elseBlock">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 mt-4">
+        <ul class="list-group">
+          <li
+            *ngFor="let tipoDocumento of tipoDocumentoList"
+            class="list-group-item"
+            (click)="openForEdit(tipoDocumento)"
+            [class.active] = "tipoDocumento == tipoDocumentoSelected"
+          >
+             {{"Estado: " + tipoDocumento.state}} - {{ "Nombre: "+ tipoDocumento.name}}
+             _.-{{ "Code: "+ tipoDocumento.code}} - {{ "Descripcion: "+ tipoDocumento.description}}
+          </li>
+        </ul>
+        <div class="card mt-4">
+          <div class="card-body">
+            <div class="card-title">
+              Insertar un nuevo Tipo Documento
+            </div>
+            <div class="form-group mt-2 ">
+              <input type="text" [(ngModel)]="tipoDocumento.name" placeholder="Insert a Name" class="form-control"/>
+            </div>
+            <div class="form-group mt-2">
+              <input type="text" [(ngModel)]="tipoDocumento.state" placeholder="Insert a State" class="form-control"/>
+            </div>
+            <div class="form-group mt-2">
+              <input type="text" [(ngModel)]="tipoDocumento.code" placeholder="Insert a code" class="form-control"/>
+            </div>
+            <div class="form-group mt-2">
+              <input type="text" [(ngModel)]="tipoDocumento.description" placeholder="Insert a Description" class="form-control"/>
+            </div>
+            <button (click)="addOrEdit()" class="btn btn-primary mt-2">
+              {{tipoDocumento== tipoDocumentoSelected? "update": "submit"}}
+            </button>
+            <button (click)="delete(tipoDocumento.id)" class="btn btn-secondary mt-2">
+              delete
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #elseBlock>
+  {{message}}
+</ng-template>

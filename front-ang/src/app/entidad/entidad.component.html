@@ -1,0 +1,60 @@
+<div *ngIf="authenticated; else elseBlock">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 mt-4">
+        <ul class="list-group">
+          <li
+            *ngFor="let entidad of entidadList"
+            class="list-group-item"
+            (click)="openForEdit(entidad)"
+            [class.active] = "entidad == entidadSelected"
+          >
+            {{"Estado: " + entidad.state}} - {{ "Nombre del negocio: "+ entidad.businessName}}
+            {{ "Nombre comercial: "+ entidad.commercialName}} - {{ "Direccion: "+ entidad.address}}
+            {{ "Phone: "+ entidad.phone}} - {{ "Numero del documento: "+ entidad.documentNumber}}
+          </li>
+        </ul>
+        <div class="card mt-4">
+          <div class="card-body">
+            <div class="card-title">
+              Insertar una nueva Entidad
+            </div>
+            <div class="form-group mt-2 ">
+              <input type="text" [(ngModel)]="entidad.businessName" placeholder="Insert a Bussines Name" class="form-control"/>
+            </div>
+            <div class="form-group mt-2">
+              <input type="text" [(ngModel)]="entidad.state" placeholder="Insert a State" class="form-control"/>
+            </div>
+            <div class="form-group mt-2">
+              <input type="text" [(ngModel)]="entidad.commercialName" placeholder="Insert a Comercial Name" class="form-control"/>
+            </div>
+            <div class="form-group mt-2">
+              <input type="text" [(ngModel)]="entidad.address" placeholder="Insert a address" class="form-control"/>
+            </div>
+            <div class="form-group mt-2">
+              <input type="text" [(ngModel)]="entidad.phone" placeholder="Insert a phone" class="form-control"/>
+            </div>
+            <div class="form-group mt-2">
+              <input type="text" [(ngModel)]="entidad.documentNumber" placeholder="Insert a document number" class="form-control"/>
+            </div>
+            <div class="form-group mt-2">
+              <input type="text" [(ngModel)]="entidad.idTipoDocumento" placeholder="Insert a id of tipo documento" class="form-control"/>
+            </div>
+            <div class="form-group mt-2">
+              <input type="text" [(ngModel)]="entidad.idTipoContribuyente" placeholder="Insert a id of tipo contribuyente" class="form-control"/>
+            </div>
+            <button (click)="addOrEdit()" class="btn btn-primary mt-2">
+              {{entidad== entidadSelected? "update": "submit"}}
+            </button>
+            <button (click)="delete(entidad.id)" class="btn btn-secondary mt-2">
+              delete
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #elseBlock>
+  {{message}}
+</ng-template>

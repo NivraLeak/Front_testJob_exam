@@ -9,13 +9,19 @@ import { HomeComponent } from './home/home.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { RouterModule } from '@angular/router';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { TipoContribuyenteComponent } from './tipo-contribuyente/tipo-contribuyente.component';
+import { EntidadComponent } from './entidad/entidad.component';
+import { TipoDocumentoComponent } from './tipo-documento/tipo-documento.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     NavigationComponent,
-    HomeComponent
+    HomeComponent,
+    TipoContribuyenteComponent,
+    EntidadComponent,
+    TipoDocumentoComponent,
   ],
   imports: [
     BrowserModule,
